@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    
+    <title>Component State in React</title>
+</head>
+<body>
+    <div id="root"></div>
+    <script src="https://unpkg.com/react@16.0.0-rc.3/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@16.0.0-rc.3/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/babel-standalone@6.26.0/babel.js"></script>
+    <script type="text/babel">
+    class StopWatch extends React.Component {
+        state = {lapse: 0, running: false}
+
+        handleRunClick = () => {
+            this.setState(state => {
+                if (state.running) {
+                    clearInterval(this.timer)
+                } else {
+                    const startTime = Date.now() - this.state.lapse
+                    this.timer = setInterval(() => {
+                        lapse: Date.now() - startTime
+                    })
+                })
+            }) 
+            return {running: !state.running}
+        }
+        
+            
+        handleClearClick = () => {
+            this.setState({lapse:0, running: false});
+        }
+        render() {
+            const {lapse, running} = this.state
+            const buttonStyles = {
+                border: '1px solid #ccc',
+                background: '#fff',
+                fontSize: '2em',
+                padding: 15,
+                margin: 5,
+                width: 200,
+            }
+
+            return (
+                <div style={{textAlign: 'center'}}>
+                    <label style={{fontSize: '5em', display: 'block'}}>
+                    {lapse}ms
+                    </label>
+                    <button onClick={this.handleRunClick} style={buttonStyles}>{running ? 'Stop':'Start'}</button>
+                    <button onClick={this.handleClearClick} style={buttonStyles}>Clear</button>
+                </div>
+            )
+        }
+    }
+
+
+const e = <StopWatch />;
+const rE = document.getElementById('root');
+ReactDOM.render(e, rE);
+    </script>
+    
+</body>
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <meta charset="utf-8">
+        <title>Hackio-1 React</title>
+    </head>
+
+    <body>
+        <div id="root"></div>
+        <script src="https://unpkg.com/react@16.0.0-rc.3/umd/react.development.js"></script>
+        <script src="https://unpkg.com/react-dom@16.0.0-rc.3/umd/react-dom.development.js"></script>
+        <script src="https://unpkg.com/babel-standalone@6.26.0/babel.js"></script>
+        <script type="text/babel">
+            const Message = props =>
+                <div>{props.children}</div>
+            const element = (
+                <div className="container">
+                    <Message>Hello World</Message>
+                    <Message>React World</Message>
+                </div>
+                ); 
+            const rootElement = document.getElementById('root'); ReactDOM.render(element, rootElement);
+        </script>
+    </body>
+
+</html>

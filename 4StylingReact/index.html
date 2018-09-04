@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Styling with className/inline</title>
+        <meta charset="UTF-8"/>
+        
+    </head>
+    <body>
+        <div id="root"></div>
+        <script src="https://unpkg.com/react@16.0.0/umd/react.development.js"></script>
+        <script src="https://unpkg.com/react-dom@16.0.0/umd/react-dom.development.js"></script>
+        <script src="https://unpkg.com/babel-standalone@6.26.0/babel.js"></script>
+        <script type="text/babel">
+            function Box({style, className, ...rest}){
+                return (
+                    <div
+                        className={`box ${className}`}
+                        style={{paddingLeft: 20, ...style}}
+                        {...rest}
+                    />
+                )
+            }
+           
+            
+            const element = (
+                <div>
+                    <Box
+                        className="box--small" 
+                        style={{backgroundColor: 'lightblue', border: '2px solid black'}}
+                    >
+                    small box
+                    </Box>
+                    <Box
+                        className="box--medium" 
+                        style={{backgroundColor: 'lightblue', border: '2px solid black'}}
+                    >
+                    small box
+                    </Box>
+                    <Box
+                        className="box--large" 
+                        style={{backgroundColor: 'lightblue', border: '2px solid black'}}
+                    >
+                    small box
+                    </Box>
+                </div>
+            )
+            
+            const rootElement = document.getElementById('root');
+            ReactDOM.render(element, rootElement);
+        </script>
+    </body>
+</html>
