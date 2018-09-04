@@ -12,24 +12,29 @@
     <script src="https://unpkg.com/babel-standalone@6.26.0/babel.js"></script>
     <script type="text/babel">
     class StopWatch extends React.Component {
-        state = {lapse: 0, running: false}
+        state = {lapse: 0, running: false};
 
         handleRunClick = () => {
             this.setState(state => {
                 if (state.running) {
                     clearInterval(this.timer)
                 } else {
-                    const startTime = Date.now() - this.state.lapse
+                    const startTime = Date.now() - this.state.lapse;
                     this.timer = setInterval(() => {
-                        lapse: Date.now() - startTime
+                        this.setState({
+                            lapse: Date.now() - startTime,
+                        })
+                        
                     })
-                })
-            }) 
-            return {running: !state.running}
+                }
+                return {running: !state.running}
+            })
+            
         }
         
             
         handleClearClick = () => {
+            clearInterval(this.timer)
             this.setState({lapse:0, running: false});
         }
         render() {
