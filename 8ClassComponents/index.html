@@ -5,8 +5,40 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Class Components in React</title>
+    <script src="https://unpkg.com/react@16.0.0-rc.3/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@16.0.0-rc.3/umd/react-dom.development.js">
+    </script>
+
+    <script src="https://unpkg.com/babel-standalone@6.26.0/babel.js"></script>
+
 </head>
 <body>
-    
+    <div id="root"></div>
+   <script type="text/babel">
+    class Counter extends React.Component {
+   
+        state = {count: 0}
+        handleClick = this.handleClick.bind(this)
+
+        handleClick(){
+            this.setState(({count}) => ({
+                count: count + 1,
+             }))
+        }
+
+        render() {
+            return (
+                <button onClick={this.handleClick}>
+                {this.state.count}
+                </button>
+            )
+        }
+    }
+    const e = <Counter />;
+    const rE = document.getElementById('root'); 
+
+    ReactDOM.render(e, rE);
+       
+   </script> 
 </body>
 </html>
